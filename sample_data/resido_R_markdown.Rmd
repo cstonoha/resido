@@ -1,0 +1,58 @@
+---
+title: "resido_white_lupin_example"
+output: html_document
+date: "`r Sys.Date()`"
+
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Percent sulfur amino acids of all white lupin sequences
+
+```{r percent, include=FALSE}
+lupin_protein_dataframe <- resido::resido_amino_acid_group_percent("~/resido/sample_data/white_lupin_proteins.FASTA", "sulfur", sort_by = "percent_amino_acid_group", decreasing = TRUE)
+```
+
+## Show the first ten rows of the "percent" output
+```{r subset_dataframe, include=TRUE}
+lupin_dataframe_top_ten <- lupin_protein_dataframe[1:10, , drop = FALSE]
+```
+
+## Create a new fasta file with the top ten highest sulfur sequences
+
+```{r dataframe_to_fasta, include=TRUE}
+resido::write.df_to_fasta(lupin_dataframe_top_ten, output_dir = "~/resido/sample_data")
+```
+
+## All amino acid frequencies of the top ten highest sulfur amino acid sequences
+
+```{r all_aa, include=TRUE}
+resido::all_amino_acids_dataframe("~/resido/sample_data/lupin_dataframe_top_ten.fasta")
+```
+
+## Heat map of top ten most sulfur white lupin sequences
+
+```{r heatmap, include=TRUE}
+resido::create_aa_heatmap("~/resido/sample_data/lupin_dataframe_top_ten.fasta")
+```
+
+## plot of amino acid frequency of the top sulfur sequence
+
+```{r freq_plot, include=TRUE}
+resido::plot_amino_acid_frequency("MQCYAMLCGAMQCDGMLCDAMLCDAMRCYAKRCDAIICYSMLCYSMLCYSMRCYAMRCYAMQCDVMQCYAM")
+```
+
+## calculating the max Met aa per 100 residues (top 10 sulfur fasta seq)
+
+```{r max_met_per_100, include=TRUE}
+resido::calculate_max_aa_per_100("~/resido/sample_data/lupin_dataframe_top_ten.fasta", "M")
+```
+
+## calculating the max Cys aa per 100 residues (top 10 sulfur fasta seq)
+
+```{r max_cys_per_100, include=TRUE}
+resido::calculate_max_aa_per_100("~/resido/sample_data/lupin_dataframe_top_ten.fasta", "C")
+```

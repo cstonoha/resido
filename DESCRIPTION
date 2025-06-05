@@ -1,0 +1,22 @@
+Package: resido
+Title: Peptide Amino Acid Composition Toolkit
+Version: 0.0.1.0
+Authors@R: c(person("Christina", "Stonoha-Arther", 
+                    email = "christina.arther@usda.gov", 
+                    role = c("aut", "cre"), 
+                    comment = c(ORCID = "0000-0002-6396-4507")),
+              person("Kevin", "Panke-Buisse", 
+                    email = "kevin.panke-buisse@usda.gov", 
+                    role = c("aut"), 
+                    comment = c(ORCID = "0000-0001-8555-1255")))
+Description: A sorting and search tool for finding proteins with 
+        specific amino acid composition. 
+License: CC0
+Depends: R (>= 3.5.0)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Suggests: 
+    testthat (>= 3.0.0)
+Imports: stringr (>= 1.5.1), dplyr (>= 1.1.4), ggplot2 (>= 3.5.1), tidyr (>= 1.3.1), reshape2 (>= 1.4.4)
+Config/testthat/edition: 3
